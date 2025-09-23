@@ -1,18 +1,17 @@
-import os
+
 from google import genai
-from dotenv import load_dotenv, find_dotenv
+
 
 class RePrompter():
     
-    def __init__(self, llm):
+    def __init__(self, prompt, llm):
+        self.prompt = prompt
         self.llm = llm
 
     def RePrompt(self):
         
-        load_dotenv(find_dotenv())
-
-        client = genai.Client()
-        propmpts = {
+        client = genai.Client(api_key='YOUR_GEMINI_API_KEY_HERE')
+        prompts = {
             
             'chatGPT' : ''' You are a prompt optimizer.  
                             Your task is to take any raw user input and rewrite it into a well-structured prompt specifically for ChatGPT.  
@@ -28,7 +27,7 @@ class RePrompter():
                             - Infer the missing details logically (e.g., if the user asks about coding, pick a suitable role like "coding tutor").  
                             - Make the rewritten prompt clear, specific, and actionable.  
                             - Ensure it maximizes the chance of ChatGPT giving the best result.  
-                            - Do not answer the request; only rewrite it into the optimized prompt.''' ,
+                            - Do not answer the request; only rewrite it into the optimized prompt. ''' ,
                             
             'claude' : '''  You are a prompt optimization assistant. 
                             Your task is to take any raw user input and rewrite it into a fully optimized prompt specifically for Claude.  
@@ -47,7 +46,7 @@ class RePrompter():
                             - Make instructions as clear, precise, and actionable as possible for Claude.  
                             - Enhance or infer missing details logically to improve clarity and completeness.  
                             - Use examples, numbered steps, or sections if it helps Claude perform better.  
-                            - Do not answer the prompt; only rewrite it in the optimized structured format.''', 
+                            - Do not answer the prompt; only rewrite it in the optimized structured format. ''', 
                             
             'gemini' : '''  You are a highly advanced AI prompt optimization engine. Your purpose is to take a user's raw, un-optimized prompt and transform it into a highly detailed, constrained, and context-rich prompt that will yield a superior and more accurate response from a large language model like Gemini.
 
@@ -70,7 +69,7 @@ class RePrompter():
                             Your task is to take any raw user input and rewrite it into a prompt that Grok can understand and respond to in the best possible way.  
 
                             Rules for rewriting:
-                            1. Keep it **concise and direct** — 1–3 short sentences max.  
+                            1. Keep it **concise and direct** — 1-3 short sentences max.  
                             2. Combine **role, task, and approach** naturally in a single sentence if possible.  
                             3. Include **minimal context** only if it helps Grok understand the audience or constraints.  
                             4. Include **output instructions** (like “use bullets” or “give a code snippet”) only if necessary, embedded in the text.  
@@ -78,15 +77,15 @@ class RePrompter():
                             6. Preserve the original intent of the input.  
                             7. Do not answer the prompt; only rewrite it in Grok-optimized form.
 
-                            Example output Gemini should produce:  
+                            Example output YOU should produce:  
                             "Act as a Python tutor and explain recursion to a beginner. Use simple examples with basic Python syntax and provide a short code snippet." '''
         
                         
         }
         
-        if self.llm in propmpts:
+        if self.llm in prompts:
     
-            content = propmpts[self.llm]
+            content = prompts[self.llm]
             
         else:
             
@@ -97,15 +96,16 @@ class RePrompter():
                             1. Preserve the original intent of the input.  
                             2. Make instructions actionable and unambiguous.  
                             3. Include role, task, context, output format, and approach naturally, without overcomplicating.  
-                            4. Keep the prompt concise — ideally 1–3 sentences if possible, but allow longer if necessary for clarity.  
+                            4. Keep the prompt concise — ideally 1-3 sentences if possible, but allow longer if necessary for clarity.  
                             5. Use clear phrasing, simple language, and logical structure.  
                             6. Avoid model-specific instructions or tags.  
-                            7. Do not answer the prompt; only rewrite it in an optimized, general-purpose format.'''
+                            7. Do not answer the prompt; only rewrite it in an optimized, general-purpose format. '''
                             
         
         response = client.models.generate_content(
             model ='gemini-2.5-flash',
-            contents = content
+            contents = f''' Original prompt: {self.prompt}\n 
+                            Meta-prompt: {content} '''
         )
 
         
