@@ -49,7 +49,7 @@ RePrompt automatically transforms your casual input into **professionally optimi
 1. **Download from Chrome Web Store** (Coming Soon)
     
     ```
-    https://chrome.google.com/webstore/detail/reprompt/-- got no 5 bucks with me, rn iam broke but will be up --
+    https://chrome.google.com/webstore/detail/reprompt/-- got no 5 bucks with me rn, iam broke but will be up --
     ```
     
 2. **Manual Installation** (Developer Mode)
