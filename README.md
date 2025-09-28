@@ -5,18 +5,6 @@
 
 RePrompt is an intelligent Chrome extension that **supercharges your AI interactions** by automatically optimizing your prompts for maximum quality results. Whether you're chatting with ChatGPT, Claude, or other AI assistants, RePrompt ensures you get the best possible responses every time.
 
-  <div style="display: flex; gap: 20px;">
-  <div style="flex: 1;">
-    <h3>Home Panel</h3>
-    <p></p>
-    <img src="/assets/popup.png" width="200"/>
-  </div>
-  <div style="flex: 1;">
-    <h3>Options Panel</h3>
-    <p>Some text on the right.</p>
-    <img src="/assets/settings.png" width="200"/>
-  </div>
-</div>
 
 ###  The Problem :
 
@@ -28,6 +16,14 @@ RePrompt is an intelligent Chrome extension that **supercharges your AI interact
 ### The Solution :
 
 RePrompt automatically transforms your casual input into **professionally optimized prompts** that unlock the full potential of AI models, giving you better results with zero effort.
+
+  <div style="display: flex; gap: 20px;">
+  <div style="flex: 1;">
+    <h3>Home Panel</h3>
+    <p></p>
+    <img src="/assets/popup.png" width="200"/>
+  </div>
+</div>
 
 ---
 
