@@ -55,8 +55,8 @@ RePrompt automatically transforms your casual input into **professionally optimi
 2. **Manual Installation** (Developer Mode)
     
     ```bash
-    git clone https://github.com/yourusername/reprompt-extension.git
-    cd reprompt-extension
+    git clone https://github.com/wtfPrethiv/RePrompt..git
+    cd RePrompt.
     ```
     
     - Open Chrome and navigate to `chrome://extensions/`
@@ -68,8 +68,8 @@ RePrompt automatically transforms your casual input into **professionally optimi
 1. **Clone the Repository**
     
     ```bash
-    git clone https://github.com/yourusername/reprompt-backend.git
-    cd reprompt-backend
+    git clone https://github.com/wtfPrethiv/RePrompt..git
+    cd RePrompt/backend
     ```
     
 2. **Install Dependencies**
